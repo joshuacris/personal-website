@@ -23,4 +23,4 @@ npm run dev
 
 ## Credits
 
-Persona 5 layout theme originally by [Kiokuzoku](https://myanimelist.net/profile/Kiokuzoku) / [rl404](https://github.com/rl404/MyAnimeList), adapted for personal use.
+Persona 5 layout theme originally by [rl404](https://github.com/rl404/MyAnimeList), adapted for personal use.
