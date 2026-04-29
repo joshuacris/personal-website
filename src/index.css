@@ -717,6 +717,130 @@ body {
   min-height: 100vh;
 }
 
+/* ── Mobile ── */
+
+@media (max-width: 768px) {
+
+  /* Navbar — scale down and reposition */
+  #status-menu {
+    height: 18vw;
+  }
+
+  .status-menu-container .status-menu {
+    left: 3%;
+    top: calc(11vw - 18px);
+  }
+
+  .status-menu .status-button {
+    font-size: 14px;
+    padding: 4px 10px;
+    border-width: 3px;
+    margin: 2px;
+  }
+
+  /* Hero — stack vertically, scale photos */
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 22vw;
+    gap: 24px;
+    padding: 0 4%;
+  }
+
+  .hero-photos {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .hero-main {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    height: 160px;
+  }
+
+  .hero-bottom {
+    width: 100%;
+    height: 120px;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  /* Sections — reduce padding */
+  .experience-section,
+  .projects-section,
+  .blog-section,
+  .blog-post-page {
+    padding: 40px 4%;
+    margin-top: 22vw;
+  }
+
+  /* Experience — wrap date below company/title */
+  .exp-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .exp-info {
+    flex-basis: calc(100% - 66px);
+  }
+
+  .exp-right {
+    width: 100%;
+    padding-left: 66px;
+  }
+
+  .exp-company,
+  .exp-dot,
+  .exp-title {
+    font-size: 16px;
+  }
+
+  .exp-details {
+    padding-left: 0;
+  }
+
+  /* Projects — single column */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Blog listing — stack date below */
+  .blog-card {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .blog-card-date {
+    padding-top: 0;
+  }
+
+  /* Blog post */
+  .blog-post-title {
+    font-size: 28px;
+  }
+
+  /* Modal — slide up from bottom on mobile */
+  .project-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .project-modal {
+    max-height: 90vh;
+    border-radius: 14px 14px 0 0;
+  }
+}
+
 /* ── Animations ── */
 
 @keyframes coop {

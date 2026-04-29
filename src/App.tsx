@@ -133,7 +133,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    title: 'Curator\'s Compnation',
+    title: 'Curator\'s Companion',
     category: 'Data Management App on Android',
     shortDesc: 'A collection management app designed for the Toronto Asian Art Museum.',
     fullDesc: 'An Android app built for the Toronto Asian Art Museum to be able to manage 100+ of their art records, implementing CRUD operations, media storage and display, and displays updated in real-time.',
