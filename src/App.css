@@ -1,0 +1,5 @@
+/* Button browser-default reset */
+.status-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
