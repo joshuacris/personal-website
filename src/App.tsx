@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaChevronDown } from 'react-icons/fa'
 import { SiDevpost } from 'react-icons/si'
+import { Analytics } from '@vercel/analytics/react'
 import BLOG_POSTS, { type BlogPost } from './blog'
 import './App.css'
 
@@ -405,6 +406,7 @@ function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </>
   )
 }
