@@ -93,20 +93,6 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: 'Hemgjord',
-    category: '3D Room Generation & Editor',
-    shortDesc: 'Upload photos, get a metrically accurate 3D reconstruction, and redesign with real furniture from your favorite catalogs.',
-    fullDesc: 'A web-based interior design and visualization tool that reconstructs a metrically accurate 3D model of a real room using user-provided dimensions and wall photos. Users can experiment with design styles and place real, purchasable catalog furniture into the existing layout.',
-    bullets: [
-      'Led a team of 5 to build a full-stack 3D room design web app with TypeScript and deployed to GCP via a Canary CI/CD pipeline',
-      'Designed an end-to-end async 3D rendering pipeline via a BullMQ job queue, webhook and Redis-driven completion/caching, stream-based uploads to Supabase, with a single API instance handling a ∼200–500 req/s',
-    ],
-    skills: ['TypeScript', 'Redis', 'BullMQ', 'GCP', 'Next.js', 'PostgreSQL', 'Prisma', 'OAuth'],
-    github: 'https://github.com/joshuacris/hemgjord',
-    image: '/images/hemgjord.png',
-  },
-  {
-    id: 2,
     title: 'Real-Time Network Intrusion Detection',
     category: 'From ML Benchmarking to a C++ / Kafka Streaming Pipeline',
     shortDesc: 'Real-Time Intrusion Detection — ML Benchmarking → Streaming Inference.',
@@ -121,6 +107,20 @@ const PROJECTS: Project[] = [
     skills: ['Python', 'scikit-learn', 'XGBoost', 'C++', 'Kafka', 'ONNX', 'Redis', 'Docker', 'Kubernetes', 'Prometheus / Grafana', 'Machine Learning'],
     github: 'https://github.com/joshuacris/ml-network-intrusion',
     image: '/images/grafana-overview.png',
+  },
+  {
+    id: 2,
+    title: 'Hemgjord',
+    category: '3D Room Generation & Editor',
+    shortDesc: 'Upload photos, get a metrically accurate 3D reconstruction, and redesign with real furniture from your favorite catalogs.',
+    fullDesc: 'A web-based interior design and visualization tool that reconstructs a metrically accurate 3D model of a real room using user-provided dimensions and wall photos. Users can experiment with design styles and place real, purchasable catalog furniture into the existing layout.',
+    bullets: [
+      'Led a team of 5 to build a full-stack 3D room design web app with TypeScript and deployed to GCP via a Canary CI/CD pipeline',
+      'Designed an end-to-end async 3D rendering pipeline via a BullMQ job queue, webhook and Redis-driven completion/caching, stream-based uploads to Supabase, with a single API instance handling a ∼200–500 req/s',
+    ],
+    skills: ['TypeScript', 'Redis', 'BullMQ', 'GCP', 'Next.js', 'PostgreSQL', 'Prisma', 'OAuth'],
+    github: 'https://github.com/joshuacris/hemgjord',
+    image: '/images/hemgjord.png',
   },
   {
     id: 3,
