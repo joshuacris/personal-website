@@ -105,7 +105,7 @@ const PROJECTS: Project[] = [
       'Containerized the services and deployed to Kubernetes (Helm + KEDA autoscaling) with Prometheus/Grafana observability and a GitHub Actions CI pipeline',
     ],
     skills: ['Python', 'scikit-learn', 'XGBoost', 'C++', 'Kafka', 'ONNX', 'Redis', 'Docker', 'Kubernetes', 'Prometheus / Grafana', 'Machine Learning'],
-    github: 'https://github.com/joshuacris/ml-network-intrusion',
+    github: 'https://github.com/joshuacris/realtime-intrusion-detection',
     image: '/images/grafana-overview.png',
   },
   {
