@@ -123,6 +123,20 @@ const PROJECTS: Project[] = [
     image: '/images/hemgjord.png',
   },
   {
+    id: 6,
+    title: 'Relay',
+    category: '8090 x Highline Beta Hackathon',
+    shortDesc: 'Captures the tribal knowledge that dies when PRs merge — and makes it queryable by developers and AI coding agents.',
+    fullDesc: 'Relay is an AI memory layer for codebases. When a pull request merges, the reasoning behind it — what was tried, what was rejected, what gotcha the diff works around — normally disappears. Relay captures that automatically from the diff, commits, and review threads, synthesizes it into durable memory, and builds a conflict-aware knowledge graph that flags when two PRs make contradictory architectural decisions instead of letting them merge silently.',
+    bullets: [
+      'Built at the 8090 × Highline Beta Hackathon — an end-to-end pipeline that auto-captures merged-PR decisions via a GitHub webhook, synthesizes them with Cerebras inference, and stores them in Backboard\'s RAG memory, queryable with cited answers by both developers and AI coding agents (R-CLI)',
+      'Designed a confidence-weighted knowledge graph that detects and flags conflicting architectural decisions across PRs (e.g. JWT vs. session auth) for human review; hardened the real-time service with multi-key rate-limit handling and live SSE updates, and deployed it as a Docker container on Fly.io',
+    ],
+    skills: ['Python', 'FastAPI', 'Cerebras', 'Backboard', 'RAG', 'Docker', 'Fly.io', 'GitHub Webhooks'],
+    github: 'https://github.com/karl-kes/8090-hacks',
+    image: '/images/relay.png',
+  },
+  {
     id: 3,
     title: 'PromptPilot',
     category: 'GenAI Genesis 2025',
