@@ -133,7 +133,7 @@ const PROJECTS: Project[] = [
       'Designed a confidence-weighted knowledge graph that detects and flags conflicting architectural decisions across PRs (e.g. JWT vs. session auth) for human review; hardened the real-time service with multi-key rate-limit handling and live SSE updates, and deployed it as a Docker container on Fly.io',
     ],
     skills: ['Python', 'FastAPI', 'Cerebras', 'Backboard', 'RAG', 'Docker', 'Fly.io', 'GitHub Webhooks'],
-    github: 'https://github.com/karl-kes/8090-hacks',
+    github: 'https://github.com/joshuacris/relay',
     image: '/images/relay.png',
   },
   {
