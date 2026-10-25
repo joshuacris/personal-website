@@ -21,7 +21,7 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
-    id: 8, company: 'Shopify', title: 'Software Engineer Intern', date: 'Sep. 2026 - Dec. 2026', logo: '/images/shopify.png',
+    id: 8, company: 'Shopify', title: 'Machine Learning Engineer Intern', date: 'Sep. 2026 - Dec. 2026', logo: '/images/shopify.png',
     bullets: [
       'Search Foundation Models Team',
       'Improved offline search relevance by up to 4.3% by post-training a 2.6B-parameter retrieval model with GRPO.',
@@ -29,7 +29,7 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: 1, company: 'Shopify', title: 'Software Engineer Intern', date: 'May 2026 - Aug. 2026', logo: '/images/shopify.png',
+    id: 1, company: 'Shopify', title: 'Machine Learning Engineer Intern', date: 'May 2026 - Aug. 2026', logo: '/images/shopify.png',
     bullets: [
       'Search Relevance Team',
       'Spearheaded DSL standardization and metric logging tooling in Java and Ruby on Rails, with changes adopted as team-wide conventions by 30+ engineers across the search relevance infrastructure.',
@@ -38,7 +38,7 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: 2, company: 'aUToronto', title: 'Software Engineer', date: 'Sep. 2025 - May 2026', logo: '/images/autoronto.png',
+    id: 2, company: 'aUToronto', title: 'Machine Learning Engineer', date: 'Sep. 2025 - May 2026', logo: '/images/autoronto.png',
     bullets: [
       'Deep Learning Acceleration Team',
       'Reduced inference latency by 3.6× and increased throughput by 33% by migrating computer-vision pipelines from OpenVINO to TensorRT (Linux, ROS2), winning 1st place in North America in the SAE AutoDrive Challenge.',
@@ -46,7 +46,7 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: 3, company: 'MAPELab', title: 'Applied Machine Learning Researcher (Part-time)', date: 'May 2024 - Present', logo: '/images/rotman.png',
+    id: 3, company: 'MAPELab', title: 'Applied Machine Learning Researcher (Part-time)', date: 'May 2024 - Apr. 2026', logo: '/images/rotman.png',
     bullets: [
       'Increased classification accuracy by 15%+ for social science research through applying methods from NLP research papers with PyTorch, Hugging Face to analyze trends in large real-world conversational datasets.',
       'Boosted classification accuracy by 25%+ by fine-tuning Transformers/LLMs (BERT) for inference on political conversations, optimizing with chunking strategies/hyperparameter tuning to handle 6,000+ word sequences.',
@@ -61,7 +61,7 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: 5, company: 'Dynamic Optimization Lab', title: 'Software Engineer (Part-time)', date: 'Apr. 2025 - Dec. 2025', logo: '/images/uoft.png',
+    id: 5, company: 'Dynamic Optimization Lab', title: 'Reinforcement Learning Engineer (Part-time)', date: 'Apr. 2025 - Dec. 2025', logo: '/images/uoft.png',
     bullets: [
       'Developed and published an open-source Python package to PyPI with 10+ modular, OOP-designed environments and a documented API to test and benchmark reinforcement-learning models.',
     ],
@@ -194,7 +194,7 @@ function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [activeBlogPost, setActiveBlogPost] = useState<BlogPost | null>(null)
 
-  const RESUME_URL = 'https://drive.google.com/file/d/10iduY0cXi9CkZNlV197-_UevDpnoaLSG/view?usp=sharing' // ← replace with your PDF URL
+  const RESUME_URL = 'https://drive.google.com/file/d/18m59n340XjGG8DMf16rjvCs0oluTUyiJ/view?usp=sharing' // ← replace with your PDF URL
 
   const toggleExp = (id: number) =>
     setOpenExp(prev => (prev === id ? null : id))
@@ -240,7 +240,7 @@ function App() {
             <div className="hero-text">
               <h1>Joshua Crisologo</h1>
               <p>Hi! I'm a Computer Science and Statistics (Machine Learning Stream) student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale. At RBC, I built a RAG pipeline serving 1000+ users and deployed a risk-classification pipeline processing 10M+ records daily.</p>
-              <p>This fall, I'm a Software Engineer Intern on Shopify's Search Foundation Models team, post-training retrieval models with reinforcement learning, after spending the summer on the Search Relevance team improving ranking. I'm really interested in building within the space between research and production: fine-tuning LLMs, optimizing inference, and shipping things that help others!</p>
+              <p>This fall, I'm a Machine Learning Engineer Intern on Shopify's Search Foundation Models team, post-training retrieval models with reinforcement learning, after spending the summer on the Search Relevance team improving ranking. I'm really interested in building within the space between research and production: fine-tuning LLMs, optimizing inference, and shipping things that help others!</p>
               <p>Outside of building, I love dogs, sushi, playing badminton, and going to concerts. I also love travelling, having been to Japan twice!</p>
               <div className="hero-socials">
                 <a href="https://github.com/joshuacris" aria-label="GitHub" target="_blank" rel="noreferrer"><FaGithub /></a>
