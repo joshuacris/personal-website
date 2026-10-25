@@ -21,17 +21,27 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
-    id: 1, company: 'Shopify', title: 'Machine Learning Engineer Intern', date: 'May 2026 - Aug. 2026', logo: '/images/shopify.png',
+    id: 8, company: 'Shopify', title: 'Software Engineer Intern', date: 'Sep. 2026 - Dec. 2026', logo: '/images/shopify.png',
     bullets: [
-      'Search Relevance Team',
-      'Building AI-powered search and recommendation systems and pipelines to enhance merchant discovery experiences.',
+      'Search Foundation Models Team',
+      'Improved offline search relevance by up to 4.3% by post-training a 2.6B-parameter retrieval model with GRPO.',
+      'Scaled RL post-training from 1 to 8 GPUs by implementing PyTorch DDP and resolving synchronization deadlocks, for a 4.1× training speedup.',
     ],
   },
   {
-    id: 2, company: 'aUToronto', title: 'Machine Learning Engineer', date: 'Sep. 2025 - Present', logo: '/images/autoronto.png',
+    id: 1, company: 'Shopify', title: 'Software Engineer Intern', date: 'May 2026 - Aug. 2026', logo: '/images/shopify.png',
+    bullets: [
+      'Search Relevance Team',
+      'Spearheaded DSL standardization and metric logging tooling in Java and Ruby on Rails, with changes adopted as team-wide conventions by 30+ engineers across the search relevance infrastructure.',
+      'Improved NDCG@10 by 0.70 points on brand-specific searches by identifying and eliminating a systematic diversity penalty; productionized the guardrail through an A/B-tested ranking pipeline on millions of queries.',
+      'Led ranking-model experiments across objective design, feature ablation, and personalized query rewriting; applied SHAP to 106K+ production pairs and reduced model feature count by 10% with no loss.',
+    ],
+  },
+  {
+    id: 2, company: 'aUToronto', title: 'Software Engineer', date: 'Sep. 2025 - May 2026', logo: '/images/autoronto.png',
     bullets: [
       'Deep Learning Acceleration Team',
-      'Reduced inference latency by 3.6× and increased throughput by 33% by migrating deep learning (computer vision) pipelines from OpenVINO to TensorRT with Linux and ROS2 for the SAE Autonomous Vehicle competition.',
+      'Reduced inference latency by 3.6× and increased throughput by 33% by migrating computer-vision pipelines from OpenVINO to TensorRT (Linux, ROS2), winning 1st place in North America in the SAE AutoDrive Challenge.',
       'Decreased memory usage by 50%+ and inference time by 60%+ by benchmarking execution providers (ONNX Runtime, TensorRT, OpenVINO) for 2D YOLOv5 and 3D PointPillars models across GPU platforms.',
     ],
   },
@@ -46,25 +56,22 @@ const EXPERIENCES: Experience[] = [
     id: 4, company: 'Royal Bank of Canada', title: 'Software Developer Intern', date: 'Sep. 2025 - Dec. 2025', logo: '/images/rbc.png',
     bullets: [
       'Digital SRE Division',
-      'Owned the end-to-end SDLC of a production RAG/GenAI inference Q&A pipeline serving 1000+ users, integrating Slack with LangChain + PostgreSQL and deploying via Docker and Kubernetes (OpenShift) CI/CD.',
-      'Achieved 30% faster responses and 10%+ higher LLM answer accuracy and consistency through vector database tuning (indexing, connection pooling), prompt engineering, and retrieval optimization.',
-      'Automated 2 daily data ingestion pipelines, integrating REST APIs & embeddings to populate vector databases.',
+      'Built a production-ready RAG/GenAI Q&A pipeline for an internal Slack workspace of 1000+ members, integrating LangChain with pgvector (PostgreSQL) and automating daily ingestion (REST APIs + embeddings).',
+      'Achieved 30% faster responses and 10%+ higher LLM answer accuracy via vector database tuning (indexing, connection pooling), prompt engineering, and retrieval optimization, deploying on Docker/Kubernetes (OpenShift).',
     ],
   },
   {
-    id: 5, company: 'Dynamic Optimization Lab', title: 'Reinforcement Learning Engineer (Part-time)', date: 'Apr. 2025 - Dec. 2025', logo: '/images/uoft.png',
+    id: 5, company: 'Dynamic Optimization Lab', title: 'Software Engineer (Part-time)', date: 'Apr. 2025 - Dec. 2025', logo: '/images/uoft.png',
     bullets: [
-      'Developed and published an OOP-based open-source package to PyPI with 10+ constrained, multi-objective environments for testing reinforcement learning models, to create a research paper on CMO-RL benchmarks.',
-      'Improved model reward by 10%+ with performance logs via TensorFlow, TensorBoard to monitor training.',
+      'Developed and published an open-source Python package to PyPI with 10+ modular, OOP-designed environments and a documented API to test and benchmark reinforcement-learning models.',
     ],
   },
   {
     id: 6, company: 'Royal Bank of Canada', title: 'Data Scientist Intern (Machine Learning)', date: 'Jan. 2025 - Aug. 2025', logo: '/images/rbc.png',
     bullets: [
       'Security Insights & AI Division',
-      'Engineered and deployed a risk-classification ML pipeline processing millions of records daily with AWS, Airflow & Python, presenting impact to the Chief Security Officer & winning the RBC Intern Challenge (2×).',
-      'Boosted accuracy by 10%+ by training, fine-tuning, and optimizing Transformer/LLM-based NLP models (BERT) with PyTorch and ML models with Scikit-Learn, XGBoost for security risk detection.',
-      'Reduced runtime of ML and ETL workflows by 50%+ through leveraging MLOps strategies, distributed processing (Apache Spark, AWS S3/Glue/SageMaker, Hadoop) and inference strategies (Batch Transform).',
+      'Engineered and deployed a risk-classification data pipeline processing 10M+ records daily (AWS, Airflow, Python), presenting impact to the Chief Security Officer and winning the RBC Intern Challenge (2×).',
+      'Cut pipeline runtime by 50%+ via distributed processing (Apache Spark, AWS S3/Glue/SageMaker, Hadoop) and boosted detection accuracy by 10%+ by training Scikit-Learn & LightGBM classifiers.',
     ],
   },
   {
@@ -232,8 +239,8 @@ function App() {
             </div>
             <div className="hero-text">
               <h1>Joshua Crisologo</h1>
-              <p>Hi! I'm a Computer Science and Statistics (Machine Learning Stream) student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale. At RBC, I built a RAG pipeline set to serve 1000+ users and deployed a risk-classification ML pipeline processing millions of data daily.</p>
-              <p>This summer, I am working as a Machine Learning Engineer Intern on Shopify's Search Relevance team. I'm really interested in building within the space between research and production: fine-tuning LLMs, optimizing inference, and shipping things that help others!</p>
+              <p>Hi! I'm a Computer Science and Statistics (Machine Learning Stream) student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale. At RBC, I built a RAG pipeline serving 1000+ users and deployed a risk-classification pipeline processing 10M+ records daily.</p>
+              <p>This fall, I'm a Software Engineer Intern on Shopify's Search Foundation Models team, post-training retrieval models with reinforcement learning, after spending the summer on the Search Relevance team improving ranking. I'm really interested in building within the space between research and production: fine-tuning LLMs, optimizing inference, and shipping things that help others!</p>
               <p>Outside of building, I love dogs, sushi, playing badminton, and going to concerts. I also love travelling, having been to Japan twice!</p>
               <div className="hero-socials">
                 <a href="https://github.com/joshuacris" aria-label="GitHub" target="_blank" rel="noreferrer"><FaGithub /></a>
