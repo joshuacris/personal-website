@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import { FaGithub, FaLinkedin, FaChevronDown } from 'react-icons/fa'
-import { SiDevpost } from 'react-icons/si'
+import { FaGithub, FaLinkedin, FaChevronDown, FaEnvelope, FaFileAlt } from 'react-icons/fa'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
-import BLOG_POSTS, { type BlogPost } from './blog'
-import './App.css'
 
-const PAGES = ['Home', 'Projects', 'Resume', 'Blog'] as const
-type Page = typeof PAGES[number]
+const RESUME_URL = 'https://drive.google.com/file/d/18m59n340XjGG8DMf16rjvCs0oluTUyiJ/view?usp=sharing'
+
+const LINKS = [
+  { label: 'GitHub', href: 'https://github.com/joshuacris', icon: <FaGithub /> },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/joshua-crisologo', icon: <FaLinkedin /> },
+  { label: 'Email', href: 'mailto:crisologoj57@gmail.com', icon: <FaEnvelope /> },
+  { label: 'Resume', href: RESUME_URL, icon: <FaFileAlt /> },
+]
 
 /* ── Experience data ── */
 interface Experience {
@@ -86,354 +89,126 @@ const EXPERIENCES: Experience[] = [
 
 /* ── Projects data ── */
 interface Project {
-  id: number
   title: string
-  category: string
-  shortDesc: string
-  fullDesc: string
-  bullets: string[]
-  skills: string[]
-  github: string
-  image?: string
+  desc: string
+  link: string
 }
 
 const PROJECTS: Project[] = [
   {
-    id: 1,
     title: 'Real-Time Network Intrusion Detection',
-    category: 'From ML Benchmarking to a C++ / Kafka Streaming Pipeline',
-    shortDesc: 'Real-Time Intrusion Detection — ML Benchmarking → Streaming Inference.',
-    fullDesc: 'An end-to-end intrusion detection project that starts as a supervised-learning study on the UNSW-NB15 dataset — comparing Logistic Regression, MLP, Random Forest, and XGBoost for binary attack detection — and rebuilds the winning model into a real-time C++ streaming pipeline that scores live network flows through Kafka, ONNX, and Kubernetes.',
-    bullets: [
-      'Benchmarked four supervised models for binary network intrusion detection on 163K+ network flows (UNSW-NB15, 58 features) — Logistic Regression, MLP, Random Forest, and XGBoost',
-      'Improved attack-detection F1 across all models via hyperparameter tuning and custom classification-threshold sweeping (0.01–0.99), boosting XGBoost F1 by 6.2% and Random Forest by 9.0%',
-      'Rebuilt the offline study into a real-time streaming pipeline: a C++ flow extractor (libpcap) parses 4.2M packets/sec into bidirectional flows published over Kafka',
-      'Served the XGBoost model from C++ via ONNX Runtime at 90K flows/sec (p99 ~17µs) with 100% label parity to the native model; Redis-backed alert deduplication cut alert volume ~95%',
-      'Containerized the services and deployed to Kubernetes (Helm + KEDA autoscaling) with Prometheus/Grafana observability and a GitHub Actions CI pipeline',
-    ],
-    skills: ['Python', 'scikit-learn', 'XGBoost', 'C++', 'Kafka', 'ONNX', 'Redis', 'Docker', 'Kubernetes', 'Prometheus / Grafana', 'Machine Learning'],
-    github: 'https://github.com/joshuacris/realtime-intrusion-detection',
-    image: '/images/grafana-overview.png',
+    desc: 'C++ / Kafka streaming pipeline scoring 90K network flows/sec with an XGBoost detector served via ONNX Runtime',
+    link: 'https://github.com/joshuacris/realtime-intrusion-detection',
   },
   {
-    id: 2,
     title: 'Hemgjord',
-    category: '3D Room Generation & Editor',
-    shortDesc: 'Upload photos, get a metrically accurate 3D reconstruction, and redesign with real furniture from your favorite catalogs.',
-    fullDesc: 'A web-based interior design and visualization tool that reconstructs a metrically accurate 3D model of a real room using user-provided dimensions and wall photos. Users can experiment with design styles and place real, purchasable catalog furniture into the existing layout.',
-    bullets: [
-      'Led a team of 5 to build a full-stack 3D room design web app with TypeScript and deployed to GCP via a Canary CI/CD pipeline',
-      'Designed an end-to-end async 3D rendering pipeline via a BullMQ job queue, webhook and Redis-driven completion/caching, stream-based uploads to Supabase, with a single API instance handling a ∼200–500 req/s',
-    ],
-    skills: ['TypeScript', 'Redis', 'BullMQ', 'GCP', 'Next.js', 'PostgreSQL', 'Prisma', 'OAuth'],
-    github: 'https://github.com/joshuacris/hemgjord',
-    image: '/images/hemgjord.png',
+    desc: 'turn photos of a room into a metrically accurate 3D model and redesign it with real catalog furniture',
+    link: 'https://github.com/joshuacris/hemgjord',
   },
   {
-    id: 6,
     title: 'Relay',
-    category: '8090 x Highline Beta Hackathon',
-    shortDesc: 'Captures the tribal knowledge that dies when PRs merge — and makes it queryable by developers and AI coding agents.',
-    fullDesc: 'Relay is an AI memory layer for codebases. When a pull request merges, the reasoning behind it — what was tried, what was rejected, what gotcha the diff works around — normally disappears. Relay captures that automatically from the diff, commits, and review threads, synthesizes it into durable memory, and builds a conflict-aware knowledge graph that flags when two PRs make contradictory architectural decisions instead of letting them merge silently.',
-    bullets: [
-      'Built at the 8090 × Highline Beta Hackathon — an end-to-end pipeline that auto-captures merged-PR decisions via a GitHub webhook, synthesizes them with Cerebras inference, and stores them in Backboard\'s RAG memory, queryable with cited answers by both developers and AI coding agents (R-CLI)',
-      'Designed a confidence-weighted knowledge graph that detects and flags conflicting architectural decisions across PRs (e.g. JWT vs. session auth) for human review; hardened the real-time service with multi-key rate-limit handling and live SSE updates, and deployed it as a Docker container on Fly.io',
-    ],
-    skills: ['Python', 'FastAPI', 'Cerebras', 'Backboard', 'RAG', 'Docker', 'Fly.io', 'GitHub Webhooks'],
-    github: 'https://github.com/joshuacris/relay',
-    image: '/images/relay.png',
+    desc: 'AI memory layer that captures the reasoning behind merged PRs and makes it queryable',
+    link: 'https://github.com/joshuacris/relay',
   },
   {
-    id: 3,
     title: 'PromptPilot',
-    category: 'GenAI Genesis 2025',
-    shortDesc: 'Optimize how you use your LLMs through prompt engineering - without spending hours scratching your head on how.',
-    fullDesc: 'PromptPilot is a Chrome Extension that allows you to input your LLM prompt, and it outputs an optimized prompt that is tailored to your needs. An example would be turning the input: "Explain object-oriented programming" into "Explain the core principles of object-oriented programming (OOP), including concepts like encapsulation, inheritance, polymorphism, and abstraction. Provide examples in Python to illustrate how these principles are implemented in code." - which provides a more thorough response from LLMs to help you learn better.',
-    bullets: [
-      'Led a team of 4 at a hackathon to build a Chrome extension and REST API that optimizes LLM prompts',
-      'Integrated Cohere’s Command A LLM with TypeScript, React, & Flask to improve the clarity and specificity of user prompts using prompt-engineering techniques (few-shot, chain-of-thought) to maximize LLM use',
-    ],
-    skills: ['Python', 'Flask', 'React', 'TypeScript', 'Plasmo'],
-    github: 'https://github.com/joshuacris/PromptPilot',
-    image: '/images/promptpilot.png',
+    desc: 'Chrome extension that rewrites your LLM prompts to be clearer and more specific',
+    link: 'https://github.com/joshuacris/PromptPilot',
   },
   {
-    id: 4,
-    title: 'Curator\'s Companion',
-    category: 'Data Management App on Android',
-    shortDesc: 'A collection management app designed for the Toronto Asian Art Museum.',
-    fullDesc: 'An Android app built for the Toronto Asian Art Museum to be able to manage 100+ of their art records, implementing CRUD operations, media storage and display, and displays updated in real-time.',
-    bullets: [
-      'Collaborated with a team of 4 to develop an app on Android Studio, using Agile methology, Jira, and Git',
-      'Implemented an in-app data management system with Java, enabling users to add, delete, search, and export art records, photos, and videos on Firebase - storing, displaying, and updating 100+ records in real-time',
-    ],
-    skills: ['Java', 'Firebase', 'JUnit', 'Mockito', 'Android Studio'],
-    github: 'https://github.com/joshuacris/CuratorsCompanion',
-    image: '/images/taam.png'
+    title: "Curator's Companion",
+    desc: 'Android collection-management app for the Toronto Asian Art Museum',
+    link: 'https://github.com/joshuacris/CuratorsCompanion',
   },
   {
-    id: 5,
-    title: 'Maternal Analytics & Monitoring Alliance (MAMA)',
-    category: 'UTSC SDG Data Challenge 2025 Best Insights Winner',
-    shortDesc: 'A dashboard containing key statistics to visualize the impact maternal and infant mortality.',
-    fullDesc: 'A Tableau dashboard, EDA notebooks and a policy brief made for the 2025 UTSC SDG Data Challenge.',
-    bullets: [
-      'Utilized Pandas, Matplotlib to process and analyze 1000+ rows of data for the UN Sustainable Development Goal Data Challenge, summarizing insights into an interactive Tableau Dashboard with 6+ visualizations',
-      'Won the Best Insights award in a team of 4 for the most creative and insightful visualizations and analysis',
-    ],
-    skills: ['Python', 'Tableau', 'Matplotlib', 'Pandas'],
-    github: 'https://github.com/joshuacris/sdg-challenge-2025-MAMA',
-    image: '/images/sdg.png',
+    title: 'MAMA',
+    desc: 'maternal & infant mortality dashboard, Best Insights winner at the UTSC SDG Data Challenge',
+    link: 'https://github.com/joshuacris/sdg-challenge-2025-MAMA',
   },
 ]
 
-
 function App() {
-  const [activePage, setActivePage] = useState<Page>('Home')
   const [openExp, setOpenExp] = useState<number | null>(null)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [activeBlogPost, setActiveBlogPost] = useState<BlogPost | null>(null)
-
-  const RESUME_URL = 'https://drive.google.com/file/d/18m59n340XjGG8DMf16rjvCs0oluTUyiJ/view?usp=sharing' // ← replace with your PDF URL
 
   const toggleExp = (id: number) =>
     setOpenExp(prev => (prev === id ? null : id))
 
-  const handleNavClick = (page: Page) => {
-    if (page === 'Resume') {
-      window.open(RESUME_URL, '_blank', 'noreferrer')
-    } else {
-      setActivePage(page)
-    }
-  }
-
   return (
-    <>
-      <div id="status-menu">
-        <div className="status-menu-container">
-          <div className="status-menu">
-            {PAGES.map((page) => (
+    <main className="page">
+      <header className="intro">
+        <h1 className="name">Joshua Crisologo</h1>
+        <p className="tagline">CS &amp; ML @ University of Toronto</p>
+        <nav className="links">
+          {LINKS.map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              aria-label={link.label}
+              title={link.label}
+              {...(link.href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noreferrer' })}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </nav>
+        <div className="bio">
+          <p>Hi! I'm a Computer Science and Machine Learning student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale.</p>
+          <p>This fall, I'm a Software Engineer Intern on Shopify's Search Foundation Models team, improving distributed training and running post-training experiments on retrieval models with reinforcement learning. I also spent the summer on the Search Relevance team improving ranking. I’m really interested in LLM fine-tuning, ML infrastructure, inference optimization, backend systems, and of course, shipping things that help people!</p>
+          <p>Outside of building, I love dogs, sushi, playing badminton, and going to concerts. I also love travelling, having been to Japan twice!</p>
+        </div>
+      </header>
+
+      <section className="section">
+        <h2 className="section-header">Experience</h2>
+        <ul className="exp-list">
+          {EXPERIENCES.map(exp => (
+            <li key={exp.id} className="exp-entry">
               <button
-                key={page}
-                className={`status-button ${page.toLowerCase()}${activePage === page ? ' active' : ''}`}
-                onClick={() => handleNavClick(page)}
+                className="exp-row"
+                onClick={() => toggleExp(exp.id)}
+                aria-expanded={openExp === exp.id}
               >
-                {page}
+                <span className="exp-logo">
+                  {exp.logo && <img src={exp.logo} alt="" />}
+                </span>
+                <span className="exp-info">
+                  <span className="exp-company">{exp.company}</span>
+                  <span className="exp-dot"> · </span>
+                  <span className="exp-title">{exp.title}</span>
+                </span>
+                <span className="exp-date">{exp.date}</span>
+                <FaChevronDown className={`exp-chevron${openExp === exp.id ? ' open' : ''}`} />
               </button>
-            ))}
-          </div>
-        </div>
-      </div>
+              {openExp === exp.id && exp.bullets && (
+                <ul className="exp-bullets">
+                  {exp.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      {/* ── Home Page ── */}
-      {activePage === 'Home' && (
-        <>
-          <section className="hero-section">
-            <div className="hero-photos">
-              <div className="hero-top-row">
-                <img className="hero-main" src="/images/hero4.jpeg" alt="" />
-                <img className="hero-main" src="/images/hero1.jpg" alt="" />
-                <img className="hero-main" src="/images/hero2.jpeg" alt="" />
-              </div>
-              <img className="hero-bottom" src="/images/hero3.png" alt="" />
-            </div>
-            <div className="hero-text">
-              <h1>Joshua Crisologo</h1>
-              <p>Hi! I'm a Computer Science and Statistics (Machine Learning Stream) student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale. At RBC, I built a RAG pipeline serving 1000+ users and deployed a risk-classification pipeline processing 10M+ records daily.</p>
-              <p>This fall, I'm a Software Engineer Intern on Shopify's Search Foundation Models team, post-training retrieval models with reinforcement learning, after spending the summer on the Search Relevance team improving ranking. I'm really interested in building within the space between research and production: fine-tuning LLMs, optimizing inference, and shipping things that help others!</p>
-              <p>Outside of building, I love dogs, sushi, playing badminton, and going to concerts. I also love travelling, having been to Japan twice!</p>
-              <div className="hero-socials">
-                <a href="https://github.com/joshuacris" aria-label="GitHub" target="_blank" rel="noreferrer"><FaGithub /></a>
-                <a href="https://www.linkedin.com/in/joshua-crisologo" aria-label="LinkedIn" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-                <a href="https://devpost.com/joshuacris" aria-label="Devpost" target="_blank" rel="noreferrer"><SiDevpost /></a>
-              </div>
-            </div>
-          </section>
+      <section className="section">
+        <h2 className="section-header">Projects</h2>
+        <ul className="project-list">
+          {PROJECTS.map(project => (
+            <li key={project.title}>
+              <a className="project-row" href={project.link} target="_blank" rel="noreferrer">
+                <FaGithub className="project-icon" />
+                <span>
+                  <span className="project-title">{project.title}</span>
+                  <span className="project-desc"> — {project.desc}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-          <section className="experience-section">
-            <h2 className="section-header">Experience</h2>
-            <div className="exp-list">
-              {EXPERIENCES.map(exp => (
-                <div key={exp.id} className="exp-entry">
-                  <div
-                    className="exp-row"
-                    onClick={() => toggleExp(exp.id)}
-                    role="button"
-                    aria-expanded={openExp === exp.id}
-                  >
-                    <div className="exp-logo">
-                      {exp.logo && <img src={exp.logo} alt={exp.company} />}
-                    </div>
-                    <div className="exp-info">
-                      <span className="exp-company">{exp.company}</span>
-                      <span className="exp-dot"> · </span>
-                      <span className="exp-title">{exp.title}</span>
-                    </div>
-                    <div className="exp-right">
-                      <span className="exp-date">{exp.date}</span>
-                      <FaChevronDown
-                        className={`exp-chevron${openExp === exp.id ? ' open' : ''}`}
-                      />
-                    </div>
-                  </div>
-                  {openExp === exp.id && exp.bullets && (
-                    <div className="exp-details">
-                      <ul className="modal-bullets">
-                        {exp.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
-        </>
-      )}
-
-      {/* ── Projects Page ── */}
-      {activePage === 'Projects' && (
-        <section className="projects-section">
-          <h2 className="section-header">Projects</h2>
-          <div className="projects-grid">
-            {PROJECTS.map(project => (
-              <div
-                key={project.id}
-                className="project-card"
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="project-card-image">
-                  {project.image
-                    ? <img src={project.image} alt={project.title} />
-                    : <div className="project-image-placeholder" />
-                  }
-                </div>
-                <div className="project-card-body">
-                  <h3 className="project-card-title">{project.title}</h3>
-                  <p className="project-card-category">{project.category}</p>
-                  <p className="project-card-desc">{project.shortDesc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Blog Page ── */}
-      {activePage === 'Blog' && !activeBlogPost && (
-        <section className="blog-section">
-          <h2 className="section-header">Blog</h2>
-          <div className="blog-list">
-            {BLOG_POSTS.map(post => (
-              <div
-                key={post.id}
-                className="blog-card"
-                onClick={() => setActiveBlogPost(post)}
-              >
-                <div className="blog-card-main">
-                  <h3 className="blog-card-title">{post.title}</h3>
-                  <p className="blog-card-desc">{post.description}</p>
-                  <div className="blog-card-tags">
-                    {post.tags.map(t => <span key={t} className="skill-tag">{t}</span>)}
-                  </div>
-                </div>
-                <span className="blog-card-date">{post.date}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Blog Full Post ── */}
-      {activePage === 'Blog' && activeBlogPost && (
-        <article className="blog-post-page">
-          <button className="blog-back-btn" onClick={() => setActiveBlogPost(null)}>
-            ← Back to Blog
-          </button>
-          <header className="blog-post-header">
-            <h1 className="blog-post-title">{activeBlogPost.title}</h1>
-            <div className="blog-post-meta">
-              <span className="blog-post-date">{activeBlogPost.date}</span>
-              <div className="blog-card-tags">
-                {activeBlogPost.tags.map(t => <span key={t} className="skill-tag">{t}</span>)}
-              </div>
-            </div>
-          </header>
-          <div className="blog-post-content">
-            {activeBlogPost.sections.map((section, i) => {
-              if (section.type === 'heading') {
-                return <h2 key={i} className="blog-post-heading">{section.content}</h2>
-              }
-              if (section.type === 'list') {
-                return (
-                  <ul key={i} className="blog-post-list">
-                    {section.content.map((item, j) => <li key={j}>{item}</li>)}
-                  </ul>
-                )
-              }
-              return <p key={i} className="blog-post-paragraph">{section.content}</p>
-            })}
-          </div>
-        </article>
-      )}
-
-      <div id="list-container"><main /></div>
-
-      {/* ── Project Modal ── */}
-      {selectedProject && (
-        <div
-          className="project-modal-overlay"
-          onClick={() => setSelectedProject(null)}
-        >
-          <div className="project-modal" onClick={e => e.stopPropagation()}>
-            <div className="modal-image">
-              {selectedProject.image
-                ? <img src={selectedProject.image} alt={selectedProject.title} />
-                : <div className="project-image-placeholder" />
-              }
-            </div>
-            <div className="modal-body">
-              <div className="modal-header-row">
-                <div>
-                  <h2 className="modal-title">{selectedProject.title}</h2>
-                  <p className="modal-category">{selectedProject.category}</p>
-                </div>
-                <div className="modal-actions">
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub"
-                    className="modal-github"
-                  >
-                    <FaGithub />
-                  </a>
-                  <button
-                    className="modal-close"
-                    onClick={() => setSelectedProject(null)}
-                    aria-label="Close"
-                  >
-                    ×
-                  </button>
-                </div>
-              </div>
-              <p className="modal-desc">{selectedProject.fullDesc}</p>
-              <ul className="modal-bullets">
-                {selectedProject.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-              <div className="modal-skills">
-                {selectedProject.skills.map(s => (
-                  <span key={s} className="skill-tag">{s}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
       <Analytics />
       <SpeedInsights />
-    </>
+    </main>
   )
 }
 
