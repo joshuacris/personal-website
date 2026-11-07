@@ -152,7 +152,7 @@ function App() {
           ))}
         </nav>
         <div className="bio">
-          <p>Hi! I'm a Computer Science and Machine Learning student at the University of Toronto graduating in 2027. I love to build ML/AI systems that scale.</p>
+          <p>Hi! I'm a Computer Science and Machine Learning student at the University of Toronto graduating in December 2027. I love to build ML/AI systems that scale.</p>
           <p>This fall, I'm a Software Engineer Intern on Shopify's Search Foundation Models team, improving distributed training and running post-training experiments on retrieval models with reinforcement learning. I also spent the summer on the Search Relevance team improving ranking. I’m really interested in LLM fine-tuning, ML infrastructure, inference optimization, backend systems, and of course, shipping things that help people!</p>
           <p>Outside of building, I love dogs, sushi, playing badminton, and going to concerts. I also love travelling, having been to Japan twice!</p>
         </div>
