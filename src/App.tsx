@@ -32,6 +32,13 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
+    id: 9, company: 'University of Toronto Scarborough', title: 'Teaching Assistant', date: 'Sep. 2026 - Dec. 2026', logo: '/images/utsc.png',
+    bullets: [
+      'CSCB36: Introduction to the Theory of Computation',
+      'Induction, Program Correctness, Recurrences, Regular Languages, Finite Automata, Push-down Automata, and Context-Free Grammar!',
+    ],
+  },
+  {
     id: 1, company: 'Shopify', title: 'Software Engineer Intern', date: 'May 2026 - Aug. 2026', logo: '/images/shopify.png',
     bullets: [
       'Search Relevance Team',
