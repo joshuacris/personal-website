@@ -241,6 +241,11 @@ ul {
   transition: color 0.15s;
 }
 
+.pub-me {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .project-row:hover .project-icon,
 .project-row:hover .project-desc {
   color: var(--body);

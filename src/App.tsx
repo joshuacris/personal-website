@@ -87,6 +87,23 @@ const EXPERIENCES: Experience[] = [
   },
 ]
 
+/* ── Publications data ── */
+interface Publication {
+  title: string
+  authors: [before: string, me: string, after: string] // `me` is bolded
+  venue: string
+  link: string
+}
+
+const PUBLICATIONS: Publication[] = [
+  {
+    title: 'Generative Search and Recommendation at Shopify',
+    authors: ['J.\u00a0Kangaspunta, K.\u00a0Hajji, D.\u00a0Fofadiya, K.\u00a0Park, M.\u00a0Garner, A.\u00a0Maltsev, R.\u00a0Synk, J.\u00a0Sepulveda, ', 'J.\u00a0Crisologo', ', S.\u00a0Sun, A.\u00a0Soni'], // \u00a0 keeps initials on the same line as surnames
+    venue: 'arXiv\u00a02026',
+    link: 'https://arxiv.org/abs/2611.08804',
+  },
+]
+
 /* ── Projects data ── */
 interface Project {
   title: string
@@ -190,6 +207,25 @@ function App() {
       </section>
 
       <section className="section">
+        <h2 className="section-header">Publications</h2>
+        <ul className="project-list">
+          {PUBLICATIONS.map(pub => (
+            <li key={pub.title}>
+              <a className="project-row" href={pub.link} target="_blank" rel="noreferrer">
+                <FaFileAlt className="project-icon" />
+                <span>
+                  <span className="project-title">{pub.title}</span>
+                  <span className="project-desc">
+                    {': '}{pub.authors[0]}<strong className="pub-me">{pub.authors[1]}</strong>{pub.authors[2]}{'\u00a0· '}{pub.venue}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="section">
         <h2 className="section-header">Projects</h2>
         <ul className="project-list">
           {PROJECTS.map(project => (
@@ -198,7 +234,7 @@ function App() {
                 <FaGithub className="project-icon" />
                 <span>
                   <span className="project-title">{project.title}</span>
-                  <span className="project-desc"> — {project.desc}</span>
+                  <span className="project-desc">: {project.desc}</span>
                 </span>
               </a>
             </li>
